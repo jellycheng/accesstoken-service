@@ -1,0 +1,35 @@
+{
+    "name": "cjs/accesstokenservice",
+    "repositories": [
+    ],
+    "require": {
+        "php": ">=7.0",
+        "monolog/monolog": "^1.16",
+        "illuminate/validation": "5.5.*",
+        "illuminate/events": "5.5.*",
+        "symfony/var-dumper": "^3.2",
+        "webpatser/laravel-uuid": "2.*",
+        "cjs/simple-route": "dev-master",
+        "cjs/lsf":"dev-master",
+        "cjs/redis":"dev-master",
+        "cjs/login":"dev-master"
+    },
+    "autoload": {
+      "psr-4": {
+        "App\\": "app/"
+      },
+      "files": [
+        "app/Util/helpers.php"
+      ]
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "config": {
+      "preferred-install": "dist"
+    },
+    "type": "project",
+    "scripts": {
+      "post-update-cmd": ["find vendor/ -name .git | xargs rm -rf"],
+      "post-install-cmd": ["find vendor/ -name .git | xargs rm -rf"]
+    }
+}
