@@ -4,6 +4,9 @@ namespace CjsSimpleRoute;
 
 /**
  * method值路由（根据接口名称路由）
+ * 格式：method=system.module.controller.func
+ *      method=system.module.controller_part1...controller_partN.func
+ * method=alipay.user.userinfo.share
  */
 class MethodRouter {
     protected $method;  //通过路由参数获取的路由参数值

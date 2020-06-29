@@ -17,6 +17,7 @@ class RedisExpireEnum extends Enum
 
     const EXPIRE_HOUR_ONE = 3600;//1小时
     const EXPIRE_HOUR_TWO = 7200;//2小时
+    const EXPIRE_HOUR_THEE = 10800;//3小时
     const EXPIRE_HOUR_TEN = 36000;//10小时
     
     

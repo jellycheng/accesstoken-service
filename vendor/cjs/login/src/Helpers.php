@@ -1,13 +1,6 @@
 <?php
 namespace CjsLogin;
 /**
- * Created by PhpStorm.
- * User: jelly
- * Date: 16/7/25
- * Time: 下午2:10
- */
-
-/**
  * 助手函数
  */
 

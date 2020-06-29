@@ -5,6 +5,7 @@
  */
 class RedisGroupEnum extends Enum
 {
-    const USER_TOKEN = 'user_token'; //用户登录态
+    const ACCESS_TOKEN = 'access_token'; 
     const COMMON = 'common';//公共组
+    
 }

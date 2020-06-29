@@ -5,7 +5,6 @@
  */
 class RedisKeyEnum extends Enum
 {
-    const WE_CHAT_USER_SESSION_KEY = 'we_chat:session_key:%s'; //微信SessionKey
-    const USER_CHK_LOGIN_FAIL_NUM = 'user:chk_login_fail_num:%s';//验证用户登录同一个token失败次数；%s对应用户ID
+    const XCX_ACCESS_TOKEN_DATA = 'xcx:accesstoken:%s';//appid, 缓存小程序appid对应的令牌
 
 }

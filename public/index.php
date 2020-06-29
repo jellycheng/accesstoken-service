@@ -2,7 +2,7 @@
 require dirname(__DIR__) . '/bootstrap/autoload.php';
 
 header('Content-type: application/json;charset=utf-8');
-\App\Util\GateWay::getInstance()->init(App::configPath('gateway.php'));
+\CjsSimpleRoute\SingletonGw::getInstance()->init(App::configPath('gateway.php'));
 $routeObj = CjsSimpleRoute\Route::getInstance()->init('\\App\\Controllers\\')->setUrlPattern('');
 $res = $routeObj->run(function($me){
     $ret = [
@@ -10,7 +10,7 @@ $res = $routeObj->run(function($me){
         'method'=>"indexAction", //默认方法
     ];
     $uri = $me->getUri();
-    $gateWayRet = \App\Util\GateWay::getInstance()->parse($uri);
+    $gateWayRet = \CjsSimpleRoute\SingletonGw::getInstance()->parse($uri);
     if($gateWayRet && isset($gateWayRet['val']) && $gateWayRet['val']) {//匹配网关
         $ret['className'] = $gateWayRet['val'][0];
         $ret['method'] = $gateWayRet['val'][1];
@@ -30,7 +30,7 @@ $res = $routeObj->run(function($me){
                 unset($uriPath[0]);
             }
         } else { // v1/coupon/info 或 xxx/v1/coupon/info
-            $tmp = \App\Util\Tools::parserPath($uriPath, '');
+            $tmp = \CjsSimpleRoute\Util::parserPath($uriPath, '');
             $ret['className'] = sprintf('%s%sController', $me->getAppCtlNamespace(),$tmp['controller']);
             $ret['method'] =  $tmp['function'] . 'Action';
 

@@ -54,7 +54,6 @@ class ComposerStaticInite98b79d5d7ebe1384012b7c83365155e
         ),
         'D' => 
         array (
-            'Doctrine\\Inflector\\' => 19,
             'Doctrine\\Common\\Inflector\\' => 26,
             'DI\\' => 3,
         ),
@@ -155,10 +154,6 @@ class ComposerStaticInite98b79d5d7ebe1384012b7c83365155e
         'Illuminate\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
-        ),
-        'Doctrine\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
         ),
         'Doctrine\\Common\\Inflector\\' => 
         array (
