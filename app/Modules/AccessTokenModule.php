@@ -53,7 +53,7 @@ class AccessTokenModule {
     }
 
 
-    //清除小程序访问令牌
+    //清除缓存在redis中的小程序访问令牌
     public static function clearXcxAccessToken4redis($appid) {
         $redisKey = sprintf(RedisKeyEnum::XCX_ACCESS_TOKEN_DATA, $appid);
         $isOk = Redis::del(RedisGroupEnum::ACCESS_TOKEN, $redisKey);
