@@ -17,7 +17,8 @@ class AccessTokenModule {
                 'data'=>[],
         ];
         if(!$secret) {//获取代码中配置的密钥,todo
-
+            $tmpKey = "THIRD_APPID_" . $appid;
+            $secret = env($tmpKey, "");
         }
         $redisKey = sprintf(RedisKeyEnum::XCX_ACCESS_TOKEN_DATA, $appid);
         $redisDataTmp = Redis::get(RedisGroupEnum::ACCESS_TOKEN, $redisKey);
