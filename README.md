@@ -10,6 +10,10 @@
 ```
 1。获取访问令牌格式：
     http://qsh.5ecms.com/AccessToken/getXcx?appid=公众号或小程序的appid&secret=密钥
+    或者
+    http://qsh.5ecms.com/AccessToken/getXcx?appid=公众号或小程序的appid
+        备注： 如果.env中有配置appid对应的密钥，则secret参数可以不传，自动取env中配置的
+
     成功响应示例：
     {
     "code": 0,
