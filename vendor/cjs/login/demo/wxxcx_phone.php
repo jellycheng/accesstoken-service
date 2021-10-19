@@ -37,6 +37,8 @@ if ($errCode == 0) {//解密成功
             }
         }
      */
+    $res = json_decode($data, true);
+    echo "手机号：" . $res['purePhoneNumber'] . PHP_EOL;
 } else {
     print($errCode . "\n");
 }

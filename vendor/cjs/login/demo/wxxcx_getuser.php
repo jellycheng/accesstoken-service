@@ -43,6 +43,8 @@ if ($errCode == 0) {//解密成功
          }
     }
      */
+    $res = json_decode($data, true);
+    echo "昵称：" . $res['nickName'] . PHP_EOL;
 } else {
     print($errCode . "\n");
 }
