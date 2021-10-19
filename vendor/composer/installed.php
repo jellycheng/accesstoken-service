@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'dbc15e11d2ec19bb4983d05a6ace79a0ddb8508b',
+        'reference' => 'ea3a8551704b15e468570144d179f74670d0e85f',
         'name' => 'cjs/accesstokenservice',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'dbc15e11d2ec19bb4983d05a6ace79a0ddb8508b',
+            'reference' => 'ea3a8551704b15e468570144d179f74670d0e85f',
             'dev_requirement' => false,
         ),
         'cjs/login' => array(
@@ -24,8 +24,10 @@
             'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../cjs/login',
-            'aliases' => array(),
-            'reference' => '3bc6928a275caeb1acbc6dd89ad057a1385b4275',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '5bc13cecb20ad5495706a127796ee10a5c8b40d8',
             'dev_requirement' => false,
         ),
         'cjs/lsf' => array(
@@ -33,7 +35,9 @@
             'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../cjs/lsf',
-            'aliases' => array(),
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'reference' => '489cb08b00598043c2e1b92f213b0c58f8dd6507',
             'dev_requirement' => false,
         ),
@@ -42,7 +46,9 @@
             'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../cjs/redis',
-            'aliases' => array(),
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'reference' => '17b232cfa087c90e3bbe6de8f54aeb4a81b1aef2',
             'dev_requirement' => false,
         ),
@@ -51,7 +57,9 @@
             'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../cjs/simple-route',
-            'aliases' => array(),
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'reference' => '2a4a1c4459cb3ecdd5fde57d236185c2430dc778',
             'dev_requirement' => false,
         ),
