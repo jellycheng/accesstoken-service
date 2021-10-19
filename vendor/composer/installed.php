@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ea3a8551704b15e468570144d179f74670d0e85f',
+        'reference' => '5ddbe9fffc013a60ee51158e497da57b0a7b3433',
         'name' => 'cjs/accesstokenservice',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ea3a8551704b15e468570144d179f74670d0e85f',
+            'reference' => '5ddbe9fffc013a60ee51158e497da57b0a7b3433',
             'dev_requirement' => false,
         ),
         'cjs/login' => array(
