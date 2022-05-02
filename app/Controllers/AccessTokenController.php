@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Modules\AccessTokenModule;
 use App\Modules\QyapiAccessTokenModule;
+use App\Util\ValidatorUtil;
 
 class AccessTokenController extends Base {
 
@@ -68,6 +69,27 @@ class AccessTokenController extends Base {
 
         $ret = QyapiAccessTokenModule::clearQyapiAccessToken4redis($corpid,$secret);
         return $this->responseSuccess([], __METHOD__);
+    }
+
+    public function getOauthAccessTokenAction() {
+        $rulesMap = [
+            'service_name' => ['required|string', '服务名'],
+            'app_env'      => ['required|string', '环境名'],
+            'code'         => ['string', 'code'],
+            'wx_app_id'    => ['required|string', '微信AppID'],
+            'wx_app_secret'=> ['string', "微信appsecret"],
+            'timestamp'    => ['required|numeric', '时间戳'],
+            'sign'         => ['required|string', '签名'],
+        ];
+        list($rules, $message) = ValidatorUtil::formatRule($rulesMap);
+        try {
+            $data = $this->validate(request()->getJson(), $rules, $message, true);
+            $ret = AccessTokenModule::getOauthAccessToken($data);
+            return $this->responseSuccess($ret);
+        } catch (\Exception $e) {
+            return $this->responseError($e->getCode(), $e->getMessage());
+        }
+
     }
 
 }

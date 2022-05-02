@@ -6,6 +6,8 @@ use CjsRedis\Redis;
 use App\Library\Enum\RedisExpireEnum;
 use App\Library\Enum\RedisGroupEnum;
 use App\Library\Enum\RedisKeyEnum;
+use App\Library\Exceptions\ServiceException;
+use App\Library\Enum\ExceptionCodeEnum;
 
 class AccessTokenModule {
 
@@ -61,5 +63,33 @@ class AccessTokenModule {
         return $isOk?true:false;
     }
 
+    public static function getOauthAccessToken($param)
+    {
+        if (empty($param['code'])) {
+            throw new ServiceException('code必传', ExceptionCodeEnum::INVALID_ARGUMENT);
+        }
+
+        if (!empty($param['code'])) {
+            $appid = $param["wx_app_id"];
+            $secret = "";
+            if(isset($param["wx_app_secret"])) {
+                $secret = $param["wx_app_secret"];
+            }
+            if(!$secret) {//获取代码中配置的密钥
+                $tmpKey = "THIRD_APPID_" . $appid;
+                $secret = env($tmpKey, "");
+            }
+            $wxConfig = [
+                    'appid'=>$appid,
+                    'appsecret'=>$secret,
+                ];
+            $wxObj = \CjsLogin\Weixin\WxWeb::create()->setWxConfig($wxConfig);
+            $ret = $wxObj->getWebAccessToken($param['code'], $appid, $secret);
+            if($wxObj->getErrno()) {
+                throw new ServiceException($wxObj->getErrmsg(), $wxObj->getErrno());
+            }
+        }
+        return $ret;
+    }
 
 }
