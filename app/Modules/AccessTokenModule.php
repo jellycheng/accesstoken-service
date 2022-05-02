@@ -8,6 +8,7 @@ use App\Library\Enum\RedisGroupEnum;
 use App\Library\Enum\RedisKeyEnum;
 use App\Library\Exceptions\ServiceException;
 use App\Library\Enum\ExceptionCodeEnum;
+use App\Util\Curl;
 
 class AccessTokenModule {
 
@@ -68,7 +69,7 @@ class AccessTokenModule {
         if (empty($param['code'])) {
             throw new ServiceException('code必传', ExceptionCodeEnum::INVALID_ARGUMENT);
         }
-
+        $ret = [];
         if (!empty($param['code'])) {
             $appid = $param["wx_app_id"];
             $secret = "";
@@ -87,6 +88,23 @@ class AccessTokenModule {
             $ret = $wxObj->getWebAccessToken($param['code'], $appid, $secret);
             if($wxObj->getErrno()) {
                 throw new ServiceException($wxObj->getErrmsg(), $wxObj->getErrno());
+            }
+        }
+        return $ret;
+    }
+
+    public static function getWeChatInfo($param, $route, $method = 'GET')
+    {
+        $ret = [];
+        $url = sprintf('%s%s', env('DOMAIN_WECHAT_HOST', 'https://api.weixin.qq.com'), $route);
+        //Log::debug('请求URL', [$url, $param]);
+        $data = Curl::request($url, $param, $method, $timeout = Curl::REQUEST_TIMEOUT);
+        //Log::debug(__METHOD__ . ' 微信公众服务平台CURL返回', [$data]);
+        if (0 == $data['code'] && !empty($data['data'])) {
+            $ret = json_decode($data['data'], true);
+            if (!empty($ret['errcode'])) {
+                //Log::debug(__METHOD__ . ' 微信公众服务平台异常信息', [$ret]);
+                throw new ServiceException('微信公众服务平台异常返回 ' . $ret['errmsg'], ExceptionCodeEnum::FAIL);
             }
         }
         return $ret;
