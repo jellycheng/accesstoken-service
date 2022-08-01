@@ -9,9 +9,9 @@
 ## 接口协议
 ```
 1。获取微信公众号或小程序访问令牌接口：
-    http://qsh.5ecms.com/AccessToken/getXcx?appid=公众号或小程序的appid&secret=密钥
+    http://qsh.xxx.com/AccessToken/getXcx?appid=公众号或小程序的appid&secret=密钥
     或者
-    http://qsh.5ecms.com/AccessToken/getXcx?appid=公众号或小程序的appid
+    http://qsh.xxx.com/AccessToken/getXcx?appid=公众号或小程序的appid
         备注： 如果.env中有配置appid对应的密钥，则secret参数可以不传，自动取env中配置的
 
     成功响应示例：
@@ -25,7 +25,7 @@
         "trace_id": "5958c360-518a-11eb-81d2-0bfcec717f4a"
     }
 2。清除微信公众号或小程序访问令牌cache
-    http://qsh.5ecms.com/AccessToken/clearXcx?appid=公众号或小程序的appid
+    http://qsh.xxx.com/AccessToken/clearXcx?appid=公众号或小程序的appid
     成功响应示例：
     {
         "code": 0,
@@ -35,7 +35,7 @@
     }
     
 3. 获取企业微信访问令牌
-    http://qsh.5ecms.com/AccessToken/getQyapi?corpid=企业id&secret=应用密钥
+    http://qsh.xxx.com/AccessToken/getQyapi?corpid=企业id&secret=应用密钥
     备注： 一个企业ID可对应多个应用密钥
 
     成功响应示例：
@@ -50,7 +50,7 @@
     }
 
 4. 清除企业微信访问令牌
-    http://qsh.5ecms.com/AccessToken/clearQyapi?corpid=企业id&secret=应用密钥
+    http://qsh.xxx.com/AccessToken/clearQyapi?corpid=企业id&secret=应用密钥
     响应成功：
     {
         "code": 0,
@@ -67,6 +67,38 @@
     "trace_id": "6d576ef0-30c5-11ec-a5ac-c73202f0bdf3"
 }
  
+jssdk签名信息:
+    curl -X POST 'http://qsh.xxx.com/JsSDK/getJsApiSign' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "wx_app_id": "微信appid",
+      "wx_app_secret":"密钥",
+      "url":"http://www.baidu.com"
+    }'
+
+
+通过授权code获取访问令牌和openid：
+    curl -X POST 'http://qsh.xxx.com/AccessToken/getOauthAccessToken' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "code":"授权code",
+      "wx_app_id": "微信appid",
+      "wx_app_secret":"密钥"
+    }'
+    响应：
+    {
+        "code": 0,
+        "msg": "success",
+        "data": {
+            "access_token": "访问令牌",
+            "expires_in": 7200,
+            "refresh_token": "",
+            "openid": "o-vEi52P8MTAwMtF5aQ4bPPJs4_U",
+            "scope": "snsapi_base"
+        },
+        "trace_id": "29105c10-1187-11ed-8ca5-4592731b7353"
+    }
+
 ```
 
 ## 资料
