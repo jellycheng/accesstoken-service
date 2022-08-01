@@ -2,8 +2,7 @@
 ini_set('date.timezone', 'Asia/Shanghai');
 $loader = require dirname(__DIR__) . '/vendor/autoload.php';
 require dirname(__DIR__) . '/app/Config/services.php';
-//注入企业ID
-\App\Util\EnterpriseId::getInstance()->mobileApiEntrySetEnterpriseid();
+
 App::setBasePath(dirname(__DIR__));
 if(file_exists(App::basePath() . '/.env')) {
     App\Util\EnvLoader::load(App::basePath());

@@ -73,13 +73,13 @@ class AccessTokenController extends Base {
 
     public function getOauthAccessTokenAction() {
         $rulesMap = [
-            'service_name' => ['required|string', '服务名'],
-            'app_env'      => ['required|string', '环境名'],
+//            'service_name' => ['required|string', '服务名'],
+//            'app_env'      => ['required|string', '环境名'],
             'code'         => ['string', 'code'],
             'wx_app_id'    => ['required|string', '微信AppID'],
             'wx_app_secret'=> ['string', "微信appsecret"],
-            'timestamp'    => ['required|numeric', '时间戳'],
-            'sign'         => ['required|string', '签名'],
+//            'timestamp'    => ['required|numeric', '时间戳'],
+//            'sign'         => ['required|string', '签名'],
         ];
         list($rules, $message) = ValidatorUtil::formatRule($rulesMap);
         try {

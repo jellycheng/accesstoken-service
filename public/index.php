@@ -2,7 +2,15 @@
 require dirname(__DIR__) . '/bootstrap/autoload.php';
 
 header('Content-type: application/json;charset=utf-8');
-\CjsSimpleRoute\SingletonGw::getInstance()->init(App::configPath('gateway.php'));
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Methods:OPTIONS, GET, POST, PUT, DELETE');
+$corsHeaders = env("CORS_HEADERS", "content-type,Authorization,token,app-platform,app-device-id,app-type,app-device-model,app-v,branchname,enterprise-id,x-account-type,track-site-name,track-jv-company,track-user-level,*");
+header('Access-Control-Allow-Headers: ' . $corsHeaders);
+if('OPTIONS' == strtoupper($_SERVER['REQUEST_METHOD'])) {
+    exit();
+}
+
 $routeObj = CjsSimpleRoute\Route::getInstance()->init('\\App\\Controllers\\')->setUrlPattern('');
 $res = $routeObj->run(function($me){
     $ret = [
@@ -53,5 +61,3 @@ if($routeObj->getRouteExists()){
     echo json_encode($res, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
 
 }
-
-

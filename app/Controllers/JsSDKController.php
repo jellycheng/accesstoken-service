@@ -14,13 +14,13 @@ class JsSDKController extends Base
     public function getJsApiSignAction()
     {
         $rulesMap = [
-            'service_name' => ['required|string', '服务名'],
-            'app_env'      => ['required|string', '环境名'],
+//            'service_name' => ['required|string', '服务名'],
+//            'app_env'      => ['required|string', '环境名'],
             'wx_app_id'    => ['required|string', '微信AppID'],
             'wx_app_secret'=> ['string', '微信appsecret'],
             'url'          => ['required|string', '当前页面的完整URL'],
-            'timestamp'    => ['required|numeric', '时间戳'],
-            'sign'         => ['required|string', '签名'],
+//            'timestamp'    => ['required|numeric', '时间戳'],
+//            'sign'         => ['required|string', '签名'],
         ];
         list($rules, $message) = ValidatorUtil::formatRule($rulesMap);
         try {
