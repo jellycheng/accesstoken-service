@@ -99,6 +99,10 @@ jssdk签名信息:
         "trace_id": "29105c10-1187-11ed-8ca5-4592731b7353"
     }
 
+通过小程序登录code获取openid、unionid值：
+    http://qsh.xxx.com/xcx/jscode2session?appid=&secret=&code=
+    
+
 ```
 
 ## 资料
